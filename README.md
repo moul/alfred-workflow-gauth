@@ -15,3 +15,5 @@ secret = xxxxxxxxxxxxxxxxxx
 [evernote - robert]
 secret = yyyyyyyyyyyyyyyyyy
 ```
+
+[Download](https://github.com/moul/alfred-workflow-gauth/raw/master/Google%20Authenticator.alfredworkflow) and import to Alfred

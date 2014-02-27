@@ -1,5 +1,5 @@
-alfred-workflow-gauth
-=====================
+Alfred Workflow: Google Authenticator
+=====================================
 
 Google Authenticator Workflow for Alfred2
 

@@ -22,3 +22,11 @@ Links
 -----
 
 - [Packal](http://www.packal.org/workflow/gauth)
+
+Todo
+----
+
+- Add checks and documentation for users without existing config file
+- Do not return anything on the time-remaining item
+- Try to refresh the time-remaining item each seconds
+- Show also the next token

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>com.alfredapp.moul.gauth</string>
 	<key>connections</key>
 	<dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
@@ -21,7 +21,7 @@
 	<key>createdby</key>
 	<string>Manfred Touron</string>
 	<key>description</key>
-	<string>Google Authenticator</string>
+	<string>Google Authenticator Workflow</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -89,6 +89,6 @@
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/moul/</string>
+	<string>https://github.com/moul/alfred-workflow-gauth</string>
 </dict>
 </plist>

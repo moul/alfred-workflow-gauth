@@ -62,8 +62,13 @@ def list_accounts(config, query):
         yield alfred.Item({u'uid': alfred.uid(i), u'arg': token},
                           section, token, 'icon.png')
         i += 1
-    yield alfred.Item({u'uid': alfred.uid(i), u'arg': None},
-                      'Time Remaining: {}s'.format(get_time_remaining()), None, 'time.png')
+    if i > 0:
+        yield alfred.Item({u'uid': alfred.uid(i), u'arg': None},
+                          'Time Remaining: {}s'.format(get_time_remaining()), None, 'time.png')
+    else:
+        yield alfred.Item({u'uid': alfred.uid(0), u'arg': None},
+                          'Google Authenticator is not yet configured',
+                          'You must create a ~/.gauth file with your secrets, please see documentation', 'icon.png')
 
 
 def get_config():

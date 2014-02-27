@@ -17,3 +17,8 @@ secret = yyyyyyyyyyyyyyyyyy
 ```
 
 [Download](https://github.com/moul/alfred-workflow-gauth/raw/master/Google%20Authenticator.alfredworkflow) and import to Alfred
+
+Links
+-----
+
+- [Packal](http://www.packal.org/workflow/gauth)

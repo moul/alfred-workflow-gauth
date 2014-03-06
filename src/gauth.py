@@ -1,50 +1,60 @@
 # -*- coding: utf-8 -*-
 
-import glob
 import os
-import re
-#import sqlite3
+import hmac
+import base64
+import struct
+import hashlib
 import time
-import hmac, base64, struct, hashlib, time, ConfigParser, os.path, math
+import ConfigParser
+import os.path
+import math
 
 import alfred
 
 
 _MAX_RESULTS = 20
-_CACHE_EXPIRY = 24 * 60 * 60 # in seconds
+_CACHE_EXPIRY = 24 * 60 * 60  # in seconds
 _CACHE = alfred.work(True)
-_CONFIG_FILE = '~/.gauth'
-
-
-#import logging
-#logging.basicConfig(filename='/tmp/alfred-gauth.log', level=logging.DEBUG)
+_CONFIG_FILE = os.path.expanduser("~") + '/.gauth'
 
 
 def get_hotp_token(key, intervals_no):
     msg = struct.pack(">Q", intervals_no)
     h = hmac.new(key, msg, hashlib.sha1).digest()
     o = ord(h[19]) & 15
-    h = (struct.unpack(">I", h[o:o+4])[0] & 0x7fffffff) % 1000000
+    h = (struct.unpack(">I", h[o:o + 4])[0] & 0x7fffffff) % 1000000
     return h
 
 
 def get_totp_token(key):
-    return get_hotp_token(key, intervals_no=int(time.time())//30)
+    return get_hotp_token(key, intervals_no=int(time.time()) // 30)
 
 
 def get_section_token(config, section):
-    try:    secret = config.get(section, 'secret')
-    except: secret = None
-    try:    key = config.get(section, 'key')
-    except: key = None
-    try:    hexkey = config.get(section, 'hexkey')
-    except: hexkey = None
+    try:
+        secret = config.get(section, 'secret')
+    except:
+        secret = None
+
+    try:
+        key = config.get(section, 'key')
+    except:
+        key = None
+
+    try:
+        hexkey = config.get(section, 'hexkey')
+    except:
+        hexkey = None
+
     if hexkey:
         key = hexkey.decode('hex')
+
     if secret:
         secret = secret.replace(' ', '')
-        secret = secret.ljust(int(math.ceil(len(secret) / 16.0)*16), '=')
-        key = base64.b32decode(secret, casefold = True)
+        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
+        key = base64.b32decode(secret, casefold=True)
+
     return str(get_totp_token(key)).zfill(6)
 
 
@@ -58,17 +68,32 @@ def list_accounts(config, query):
         if len(query.strip()) and not query.lower() in str(section).lower():
             continue
 
-        token = get_section_token(config, section)
-        yield alfred.Item({u'uid': alfred.uid(i), u'arg': token},
-                          section, token, 'icon.png')
-        i += 1
+        try:
+            token = get_section_token(config, section)
+            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token},
+                              section, token, 'icon.png')
+            i += 1
+        except:
+            pass
+
     if i > 0:
-        yield alfred.Item({u'uid': alfred.uid(i), u'arg': None},
-                          'Time Remaining: {}s'.format(get_time_remaining()), None, 'time.png')
+        yield alfred.Item({u'uid': alfred.uid(i), u'arg': ''},
+                          'Time Remaining: {}s'.format(get_time_remaining()),
+                          None, 'time.png')
     else:
-        yield alfred.Item({u'uid': alfred.uid(0), u'arg': None},
-                          'Google Authenticator is not yet configured',
-                          'You must create a ~/.gauth file with your secrets, please see documentation', 'icon.png')
+        yield alfred.Item({u'uid': alfred.uid(0), u'arg': ''},
+                          "Account not found",
+                          "There is no account named '" + query +
+                          "' on your configuration file (~/.gauth)",
+                          'icon.png')
+
+
+def config_file_not_found():
+    yield alfred.Item({u'uid': alfred.uid(0), u'arg': ''},
+                      'Google Authenticator is not yet configured',
+                      "You must create a '~/.gauth' file with your secrets " +
+                      "(see documentation)",
+                      'icon.png')
 
 
 def get_config():
@@ -79,10 +104,12 @@ def get_config():
 
 def main(config, action, query):
     if action == 'list':
-        alfred.write(alfred.xml(list_accounts(config, query), maxresults=_MAX_RESULTS))
+        if os.path.isfile(_CONFIG_FILE):
+            alfred.write(alfred.xml(list_accounts(config, query),
+                                    maxresults=_MAX_RESULTS))
+        else:
+            alfred.write(alfred.xml(config_file_not_found()))
 
 
 if __name__ == "__main__":
-    (action, query,) = alfred.args()
-    config = get_config()
-    main(config, action, query)
+    main(get_config(), action=alfred.args()[0], query=alfred.args()[1])

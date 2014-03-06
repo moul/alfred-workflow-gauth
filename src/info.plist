@@ -16,6 +16,14 @@
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C74DB286-B179-49BB-947D-91B3706ADB20</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -38,7 +46,7 @@
 				<key>keyword</key>
 				<string>gauth</string>
 				<key>runningsubtext</key>
-				<string>Please Wait...</string>
+				<string>Please wait...</string>
 				<key>script</key>
 				<string>python gauth.py list "{query}"</string>
 				<key>subtext</key>
@@ -46,7 +54,7 @@
 				<key>title</key>
 				<string>Google Authenticator</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -72,6 +80,31 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Verification code ({query}) has been copied to the clipboard</string>
+				<key>title</key>
+				<string>Google Authenticator</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C74DB286-B179-49BB-947D-91B3706ADB20</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -86,6 +119,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>60</real>
+		</dict>
+		<key>C74DB286-B179-49BB-947D-91B3706ADB20</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

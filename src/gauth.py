@@ -70,7 +70,7 @@ def list_accounts(config, query):
 
         try:
             token = get_section_token(config, section)
-            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token},
+            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token, u'autocomplete': section},
                               section, token, 'icon.png')
             i += 1
         except:

@@ -32,10 +32,14 @@ Links
 Acknowledgment
 --------------
 
-- Original alarm clock icon by Alex AS from The Noun Project (licensed under Creative.
-Commons Attribution)
-- Status & signs icons by [Hereldar Terkenya](http://hereldar.deviantart.com/) (licensed under a Creative Commons Attribution-Share Alike 3.0 License)
-- Original source code by [Manfred Touron](https://github.com/moul)
+- Original alarm clock icon
+  - [Alex Auda Samora from The Noun Project](http://thenounproject.com/razerk/) 
+  - Licensed under Creative Commons Attribution
+- Status & signs icons
+  - [Hereldar Terkenya](http://hereldar.deviantart.com/)
+  - Licensed under a Creative Commons Attribution-Share Alike 3.0 License
+- Original source code
+  - [Manfred Touron](https://github.com/moul)
 
 
 
@@ -46,3 +50,6 @@ Todo
 - ~~Do not return anything on the time-remaining item~~
 - Try to refresh the time-remaining item each seconds
 - ~~Show also the next token~~
+- ~~Add auto complete support~~
+- ~~Show all items before typing~~
+- ~~Ignore items with wrong key~~ 

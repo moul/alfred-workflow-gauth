@@ -77,7 +77,9 @@ def list_accounts(config, query):
             pass
 
     if i > 0:
-        yield alfred.Item({u'uid': alfred.uid(i), u'arg': '', u'ignore': 'yes'},
+        # The uid for the remaining time will be the current time,
+        # so it will appears always at the last position in the list
+        yield alfred.Item({u'uid': time.time(), u'arg': '', u'ignore': 'yes'},
                           'Time Remaining: {}s'.format(get_time_remaining()),
                           None, 'time.png')
     else:

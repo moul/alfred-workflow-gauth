@@ -21,11 +21,23 @@ secret=yyyyyyyyyyyyyyyyyy
 
 [Download](https://github.com/golimpio/alfred-workflow-gauth/raw/master/Google%20Authenticator.alfredworkflow) and import to Alfred
 
+
 Links
 -----
 
 - [Packal](http://www.packal.org/workflow/gauth)
 - [Manfred Touron's original work](https://github.com/moul/alfred-workflow-gauth)
+
+
+Acknowledgment
+--------------
+
+- Original alarm clock icon by Alex AS from The Noun Project (licensed under Creative.
+Commons Attribution)
+- Status & signs icons by [Hereldar Terkenya](http://hereldar.deviantart.com/) (licensed under a Creative Commons Attribution-Share Alike 3.0 License)
+- Original source code by [Manfred Touron](https://github.com/moul)
+
+
 
 Todo
 ----

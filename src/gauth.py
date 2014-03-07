@@ -77,23 +77,23 @@ def list_accounts(config, query):
             pass
 
     if i > 0:
-        yield alfred.Item({u'uid': alfred.uid(i), u'arg': ''},
+        yield alfred.Item({u'uid': alfred.uid(i), u'arg': '', u'ignore': 'yes'},
                           'Time Remaining: {}s'.format(get_time_remaining()),
                           None, 'time.png')
     else:
-        yield alfred.Item({u'uid': alfred.uid(0), u'arg': ''},
+        yield alfred.Item({u'uid': alfred.uid(0), u'arg': '', u'ignore': 'yes'},
                           "Account not found",
                           "There is no account named '" + query +
                           "' on your configuration file (~/.gauth)",
-                          'icon.png')
+                          'warning.png')
 
 
 def config_file_not_found():
-    yield alfred.Item({u'uid': alfred.uid(0), u'arg': ''},
+    yield alfred.Item({u'uid': alfred.uid(0), u'arg': '', u'ignore': 'yes'},
                       'Google Authenticator is not yet configured',
                       "You must create a '~/.gauth' file with your secrets " +
                       "(see documentation)",
-                      'icon.png')
+                      'error.png')
 
 
 def get_config():

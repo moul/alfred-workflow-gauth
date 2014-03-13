@@ -24,6 +24,12 @@ secret=yyyyyyyyyyyyyyyyyy
 
 [Download](https://github.com/moul/alfred-workflow-gauth/raw/master/Google%20Authenticator.alfredworkflow) and import to Alfred
 
+Dependencies
+------------
+
+- Alfred 2 with PowerPack
+- Python >= 2.7
+
 Non-exhaustive list of links for "secret" installation
 ------------------------------------------------------
 

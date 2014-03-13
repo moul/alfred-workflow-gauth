@@ -69,13 +69,6 @@ def unescape(query, characters=None):
         query = query.replace('\\%s' % character, character)
     return query
 
-def work(volatile):
-    path = {
-        True: '~/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data',
-        False: '~/Library/Application Support/Alfred 2/Workflow Data'
-    }[bool(volatile)]
-    return _create(os.path.join(os.path.expanduser(path), bundleid))
-
 def write(text):
     sys.stdout.write(text)
 

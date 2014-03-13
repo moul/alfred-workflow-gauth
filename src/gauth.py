@@ -14,8 +14,6 @@ import alfred
 
 
 _MAX_RESULTS = 20
-_CACHE_EXPIRY = 24 * 60 * 60  # in seconds
-_CACHE = alfred.work(True)
 _CONFIG_FILE = os.path.expanduser("~") + '/.gauth'
 
 
@@ -70,8 +68,11 @@ def list_accounts(config, query):
 
         try:
             token = get_section_token(config, section)
-            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token, u'autocomplete': section},
-                              section, token, 'icon.png')
+            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token,
+                               u'autocomplete': section},
+                              section,
+                              'Post {} at cursor'.format(token),
+                              'icon.png')
             i += 1
         except:
             pass

@@ -64,3 +64,8 @@ Acknowledgment
   - [Manfred Touron](https://github.com/moul)
 - Serial contributor
   - [Gilberto Olimpio](https://github.com/golimpio)
+
+License
+-------
+
+MIT

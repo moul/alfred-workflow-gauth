@@ -107,7 +107,40 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Description
+———————————
+Equivalent of the mobile versions of Google Authenticator: https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8.
+ 
+System Modifications
+————————————————————
+Create a ~/.gauth file with your secrets, ie:
+[google - bob@gmail.com]
+secret = xxxxxxxxxxxxxxxxxx
+
+[evernote - robert]
+secret = yyyyyyyyyyyyyyyyyy
+Source Code: Github
+https://github.com/m...-workflow-gauth
+ 
+Links
+—————
+- Packal: http://www.packal.org/workflow/gauth-google-authenticator
+- Direct Download: https://github.com/packal/repository/raw/master/com.alfredapp.moul.gauth/google_authenticator.alfredworkflow
+- Official Forum Post: http://www.alfredforum.com/topic/4062-gauth-google-authenticator-time-based-two-factor-authentication/
+- Github: https://github.com/moul/alfred-workflow-gauth/
+ 
+Acknowledgments
+——————————————-
+- Original alarm clock icon
+  - Alex Auda Samora from The Noun Project
+  - Licensed under Creative Commons Attribution
+- Status &amp; signs icons
+  - Hereldar Terkenya
+  - Licensed under a Creative Commons Attribution-Share Alike 3.0 License
+- Original source code
+  - Manfred Touron
+- Serial contributor
+  - Gilberto Olimpio</string>
 	<key>uidata</key>
 	<dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>

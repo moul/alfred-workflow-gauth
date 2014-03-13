@@ -3,6 +3,12 @@ Alfred Workflow: Google Authenticator
 
 Google Authenticator Workflow for Alfred2
 
+Equivalent of the mobile versions of [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8).
+ 
+I personally use it on Gmail, Amazon AWS, Github, Facebook, Evernote and Dropbox
+ 
+A bigger list is available on [Wikipedia](http://en.wikipedia.org/wiki/Two-step_verification)
+
 Installation
 ------------
 
@@ -17,6 +23,16 @@ secret=yyyyyyyyyyyyyyyyyy
 ```
 
 [Download](https://github.com/moul/alfred-workflow-gauth/raw/master/Google%20Authenticator.alfredworkflow) and import to Alfred
+
+Non-exhaustive list of links for "secret" installation
+------------------------------------------------------
+
+- [Google](http://www.google.com/landing/2step/)
+- [Dropbox](https://www.dropbox.com/help/363/en)
+- [Evernote](http://blog.evernote.com/blog/2013/05/30/evernotes-three-new-security-features/)
+- [Github](https://github.com/blog/1614-two-factor-authentication)
+- [Amazon AWS](http://aws.amazon.com/iam/details/mfa/)
+- [Facebook](https://www.facebook.com/settings?tab=security)
 
 Links
 -----

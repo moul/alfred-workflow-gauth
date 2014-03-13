@@ -43,7 +43,9 @@ Non-exhaustive list of links for "secret" installation
 Links
 -----
 
-- [Packal](http://www.packal.org/workflow/gauth)
+- [Packal: Gauth](http://www.packal.org/workflow/gauth)
+- [Official Forum Post](http://www.alfredforum.com/topic/4062-gauth-google-authenticator-time-based-two-factor-authentication/)
+- [Source Code](https://github.com/moul/alfred-workflow-gauth/)
 
 Acknowledgment
 --------------

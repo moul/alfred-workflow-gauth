@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 import os
 import hmac
 import base64
@@ -105,7 +106,16 @@ def get_config():
     return config
 
 
-def main(config, action, query):
+def main(action, query):
+    try:
+        config = get_config()
+    except Exception as e:
+        alfred.write(alfred.xml([alfred.Item({u'uid': alfred.uid(0), u'arg': '',
+                                              u'ignore': 'yes'},
+                                             "~/.gauth: Invalid syntax",
+                                             str(e).replace('\n', ' '),
+                                             "error.png")]))
+        sys.exit(1)
     if action == 'list':
         if os.path.isfile(_CONFIG_FILE):
             alfred.write(alfred.xml(list_accounts(config, query),
@@ -115,4 +125,4 @@ def main(config, action, query):
 
 
 if __name__ == "__main__":
-    main(get_config(), action=alfred.args()[0], query=alfred.args()[1])
+    main(action=alfred.args()[0], query=alfred.args()[1])

@@ -85,7 +85,8 @@ def list_accounts(config, query):
                           'Time Remaining: {}s'.format(get_time_remaining()),
                           None, 'time.png')
     else:
-        yield alfred.Item({u'uid': alfred.uid(0), u'arg': '', u'ignore': 'yes'},
+        yield alfred.Item({u'uid': alfred.uid(0), u'arg': '',
+                           u'ignore': 'yes'},
                           "Account not found",
                           "There is no account named '" + query +
                           "' on your configuration file (~/.gauth)",
@@ -110,8 +111,8 @@ def main(action, query):
     try:
         config = get_config()
     except Exception as e:
-        alfred.write(alfred.xml([alfred.Item({u'uid': alfred.uid(0), u'arg': '',
-                                              u'ignore': 'yes'},
+        alfred.write(alfred.xml([alfred.Item({u'uid': alfred.uid(0),
+                                              u'arg': '', u'ignore': 'yes'},
                                              "~/.gauth: Invalid syntax",
                                              str(e).replace('\n', ' '),
                                              "error.png")]))

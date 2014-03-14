@@ -8,19 +8,22 @@ echo "Creating Google Authenticator workflow file..."
 
 WORKFLOW_FILE=Google\ Authenticator.alfredworkflow
 if [ -f "$WORKFLOW_FILE" ]; then
-	echo "Removing previous workflow..."
+    echo "Removing previous workflow..."
     rm "$WORKFLOW_FILE"
 fi
 
+echo "Cleaning it..."
+find src \( -name "*~" -or -name ".??*~" -or -name "*.pyc" -or -name "#*#" -or -name ".DS_Store" \) -delete
+
 echo "Bundling it..."
-cd src && zip -r "../$WORKFLOW_FILE" * -x "*.DS_Store" && cd ..
+cd src && zip -r "../$WORKFLOW_FILE" * && cd ..
 
 while test $# -gt 0
 do
     case "$1" in
         --install | -i)
-			echo "Installing $WORKFLOW_FILE..."
-			open "$WORKFLOW_FILE"
+            echo "Installing $WORKFLOW_FILE..."
+            open "$WORKFLOW_FILE"
             ;;
     esac
     shift

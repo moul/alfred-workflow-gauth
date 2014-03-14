@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.5.0 (2014-03-15)
+- Added more syntax error handling
+
 ## 1.4.0 (2014-03-14)
 - Added LargeType and Write-At-Cursor outputs (with key modifier)
 - Updated description

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0 (2014-03-18)
+- We can now add secrets from Alfred
+- The .gauth config is being automatically created
+
 ## 1.5.0 (2014-03-15)
 - Added more syntax error handling
 

@@ -17,6 +17,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8D4FBD76-2AC8-4B24-A980-15CEA567F80A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<array>
 			<dict>
@@ -42,6 +53,17 @@
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
 				<string>Large Type {query}</string>
+			</dict>
+		</array>
+		<key>8D4FBD76-2AC8-4B24-A980-15CEA567F80A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EBE66B7E-A102-4C7D-8E1E-FFC0D86ADF1F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 			</dict>
 		</array>
 		<key>C7915157-5379-4CCC-9076-D0918BB66AB0</key>
@@ -240,6 +262,35 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>gauth add</string>
+				<key>subtext</key>
+				<string>Account name, secret</string>
+				<key>text</key>
+				<string>Add a new secret</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>0C69FA9F-6875-40F5-ADFB-CD20428410A0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
@@ -255,10 +306,44 @@
 			<integer>0</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>python gauth.py add "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>0C69FA9F-6875-40F5-ADFB-CD20428410A0</string>
+			<string>8D4FBD76-2AC8-4B24-A980-15CEA567F80A</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Google Authenticator</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>EBE66B7E-A102-4C7D-8E1E-FFC0D86ADF1F</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -315,10 +400,20 @@ Acknowledgments
 			<key>ypos</key>
 			<real>650</real>
 		</dict>
+		<key>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</key>
+		<dict>
+			<key>ypos</key>
+			<real>520</real>
+		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
 			<key>ypos</key>
 			<real>400</real>
+		</dict>
+		<key>8D4FBD76-2AC8-4B24-A980-15CEA567F80A</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
 		</dict>
 		<key>9C87E9F8-DFE4-4A19-AE02-F468FE5DA32B</key>
 		<dict>
@@ -344,6 +439,11 @@ Acknowledgments
 		<dict>
 			<key>ypos</key>
 			<real>80</real>
+		</dict>
+		<key>EBE66B7E-A102-4C7D-8E1E-FFC0D86ADF1F</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

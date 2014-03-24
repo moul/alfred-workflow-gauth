@@ -311,7 +311,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>python gauth.py add_accou t "{query}"</string>
+				<string>python gauth.py add_account "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

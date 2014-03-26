@@ -69,7 +69,7 @@ def decode(s):
     return unicodedata.normalize('NFC', s.decode('utf-8'))
 
 
-def uid(uid):
+def get_uid(uid):
     return u'-'.join(map(unicode, (bundleid, uid)))
 
 
@@ -113,7 +113,7 @@ class AlfredWorkflow(object):
         return write(xml(items, maxresults=self.max_results))
 
     def message_item(self, title, message, icon=None, uid=0):
-        return Item({u'uid': uid(uid), u'arg': '',
+        return Item({u'uid': get_uid(uid), u'arg': '',
                             u'ignore': 'yes'}, title, message, icon)
 
     def warning_item(self, title, message, uid=0):

@@ -1,62 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import os
 import ConfigParser
-import os.path
 import time
 
 import alfred
 import otp
 
 
-class AlfredWorkflow(object):
-    _reserved_words = []
-
-    def write_text(self, text):
-        print(text)
-
-    def write_item(self, item):
-        return self.write_items([item])
-
-    def write_items(self, items):
-        return alfred.write(alfred.xml(items, maxresults=self.max_results))
-
-    def message_item(self, title, message, icon=None, uid=0):
-        return alfred.Item({u'uid': alfred.uid(uid), u'arg': '',
-                            u'ignore': 'yes'}, title, message, icon)
-
-    def warning_item(self, title, message, uid=0):
-        return self.message_item(title=title, message=message, uid=uid,
-                                 icon='warning.png')
-
-    def error_item(self, title, message, uid=0):
-        return self.message_item(title=title, message=message, uid=uid,
-                                 icon='error.png')
-
-    def exception_item(self, title, exception, uid=0):
-        message = str(exception).replace('\n', ' ')
-        return self.error_item(title=title, message=message, uid=uid)
-
-    def route_action(self, action, query=None):
-        method_name = 'do_{}'.format(action)
-        if not hasattr(self, method_name):
-            raise RuntimeError('Unknown action {}'.format(action))
-
-        method = getattr(self, method_name)
-        return method(query)
-
-    def is_command(self, query):
-        try:
-            command, rest = query.split(' ', 1)
-        except ValueError:
-            command = query
-            command = command.strip()
-        return command in self._reserved_words or \
-            hasattr(self, 'do_{}'.format(command))
-
-
-class AlfredGAuth(AlfredWorkflow):
+class AlfredGAuth(alfred.AlfredWorkflow):
     _config_file_initial_content = """
 #Examples of valid configurations:
 #[google - bob@gmail.com]
@@ -196,6 +148,7 @@ class AlfredGAuth(AlfredWorkflow):
 def main(action, query):
     alfred_gauth = AlfredGAuth()
     alfred_gauth.route_action(action, query)
+
 
 if __name__ == "__main__":
     main(action=alfred.args()[0], query=alfred.args()[1])

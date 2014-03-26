@@ -98,3 +98,49 @@ def _create(path):
     if not os.access(path, os.W_OK):
         raise IOError('No write access: %s' % path)
     return path
+
+
+class AlfredWorkflow(object):
+    _reserved_words = []
+
+    def write_text(self, text):
+        print(text)
+
+    def write_item(self, item):
+        return self.write_items([item])
+
+    def write_items(self, items):
+        return write(xml(items, maxresults=self.max_results))
+
+    def message_item(self, title, message, icon=None, uid=0):
+        return Item({u'uid': uid(uid), u'arg': '',
+                            u'ignore': 'yes'}, title, message, icon)
+
+    def warning_item(self, title, message, uid=0):
+        return self.message_item(title=title, message=message, uid=uid,
+                                 icon='warning.png')
+
+    def error_item(self, title, message, uid=0):
+        return self.message_item(title=title, message=message, uid=uid,
+                                 icon='error.png')
+
+    def exception_item(self, title, exception, uid=0):
+        message = str(exception).replace('\n', ' ')
+        return self.error_item(title=title, message=message, uid=uid)
+
+    def route_action(self, action, query=None):
+        method_name = 'do_{}'.format(action)
+        if not hasattr(self, method_name):
+            raise RuntimeError('Unknown action {}'.format(action))
+
+        method = getattr(self, method_name)
+        return method(query)
+
+    def is_command(self, query):
+        try:
+            command, rest = query.split(' ', 1)
+        except ValueError:
+            command = query
+            command = command.strip()
+        return command in self._reserved_words or \
+            hasattr(self, 'do_{}'.format(command))

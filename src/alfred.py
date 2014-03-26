@@ -100,6 +100,35 @@ def _create(path):
     return path
 
 
+def work(volatile):
+    path = {
+        True: '~/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data',
+        False: '~/Library/Application Support/Alfred 2/Workflow Data'
+    }[bool(volatile)]
+    return _create(os.path.join(os.path.expanduser(path), bundleid))
+
+
+def config_set(key, value, volatile=True):
+    filepath = os.path.join(work(volatile), 'config.plist')
+    try:
+        conf = plistlib.readPlist(filepath)
+    except IOError:
+        conf = {}
+    conf[key] = value
+    plistlib.writePlist(conf, filepath)
+
+
+def config_get(key, default=None, volatile=True):
+    filepath = os.path.join(work(volatile), 'config.plist')
+    try:
+        conf = plistlib.readPlist(filepath)
+    except IOError:
+        conf = {}
+    if key in conf:
+        return conf[key]
+    return default
+
+
 class AlfredWorkflow(object):
     _reserved_words = []
 

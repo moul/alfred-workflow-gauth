@@ -13,12 +13,15 @@ The command line should be
 
 python yourscript.py "{query}" arg2 arg3 ...
 """
+
+
 UNESCAPE_CHARACTERS = u""" ;()"""
 
 _MAX_RESULTS_DEFAULT = 9
 
 preferences = plistlib.readPlist('info.plist')
 bundleid = preferences['bundleid']
+
 
 class Item(object):
     @classmethod
@@ -49,34 +52,45 @@ class Item(object):
                 (value, attributes) = value
             except:
                 attributes = {}
-            SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
+                elem = SubElement(item, attribute, self.unicode(attributes))
+                elem.text = unicode(value)
         return item
+
 
 def args(characters=None):
     return tuple(unescape(decode(arg), characters) for arg in sys.argv[1:])
 
+
 def config():
     return _create('config')
+
 
 def decode(s):
     return unicodedata.normalize('NFC', s.decode('utf-8'))
 
+
 def uid(uid):
     return u'-'.join(map(unicode, (bundleid, uid)))
 
+
 def unescape(query, characters=None):
-    for character in (UNESCAPE_CHARACTERS if (characters is None) else characters):
+    if not characters:
+        characters = UNESCAPE_CHARACTERS
+    for character in characters:
         query = query.replace('\\%s' % character, character)
     return query
 
+
 def write(text):
     sys.stdout.write(text)
+
 
 def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
     root = Element('items')
     for item in itertools.islice(items, maxresults):
         root.append(item.xml())
     return tostring(root, encoding='utf-8')
+
 
 def _create(path):
     if not os.path.isdir(path):

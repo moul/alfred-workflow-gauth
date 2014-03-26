@@ -227,7 +227,7 @@
 				<key>runningsubtext</key>
 				<string>Please wait...</string>
 				<key>script</key>
-				<string>python gauth.py list "{query}"</string>
+				<string>python gauth.py search_by_account "{query}"</string>
 				<key>subtext</key>
 				<string>Account</string>
 				<key>title</key>
@@ -260,27 +260,6 @@
 			<integer>0</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gauth add</string>
-				<key>subtext</key>
-				<string>Account name, secret</string>
-				<key>text</key>
-				<string>Add a new secret</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
 			<key>type</key>
 			<string>alfred.workflow.output.largetype</string>
 			<key>uid</key>
@@ -308,10 +287,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>gauth add</string>
+				<key>subtext</key>
+				<string>Account name, secret</string>
+				<key>text</key>
+				<string>Add a new secret</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>python gauth.py add "{query}"</string>
+				<string>python gauth.py add_account "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -403,7 +403,7 @@ Acknowledgments
 		<key>7BEE3C7D-A99B-42F8-BCB9-BC625434942E</key>
 		<dict>
 			<key>ypos</key>
-			<real>520</real>
+			<real>770</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>

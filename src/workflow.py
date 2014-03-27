@@ -75,7 +75,7 @@ class AlfredGAuth(alfred.AlfredWorkflow):
         return len(query.strip()) and not query.lower() in str(account).lower()
 
     def account_item(self, account, token, uid=None):
-        return alfred.Item({u'uid': alfred.uid(uid), u'arg': token,
+        return alfred.Item({u'uid': alfred.get_uid(uid), u'arg': token,
                             u'autocomplete': account}, account,
                            'Post {} at cursor'.format(token), 'icon.png')
 

@@ -1,6 +1,7 @@
 Alfred Workflow: Google Authenticator
 =====================================
 
+[![Build Status](https://travis-ci.org/moul/alfred-workflow-gauth.svg?branch=develop)](https://travis-ci.org/moul/alfred-workflow-gauth)
 [![authors](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/badges/authors.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
 [![library users](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/badges/library-users.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
 [![Total views](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/counters/views.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
@@ -12,9 +13,9 @@ Google Authenticator Workflow for Alfred2
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/anim.gif)
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/3.png)
 Equivalent of the mobile versions of [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8).
- 
+
 I personally use it on Gmail, Amazon AWS, Github, Facebook, Evernote and Dropbox
- 
+
 A bigger list is available on [Wikipedia](http://en.wikipedia.org/wiki/Two-step_verification)
 
 Installation
@@ -59,7 +60,7 @@ Acknowledgment
 --------------
 
 - Original alarm clock icon
-  - [Alex Auda Samora from The Noun Project](http://thenounproject.com/razerk/) 
+  - [Alex Auda Samora from The Noun Project](http://thenounproject.com/razerk/)
   - Licensed under Creative Commons Attribution
 - Status & signs icons
   - [Hereldar Terkenya](http://hereldar.deviantart.com/)

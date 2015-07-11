@@ -23,7 +23,7 @@ Installation
 
 Create a `~/.gauth` file with your secrets, ie:
 
-```
+```ini
 [google - bob@gmail.com]
 secret=xxxxxxxxxxxxxxxxxx
 

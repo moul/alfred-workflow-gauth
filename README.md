@@ -2,11 +2,6 @@ Alfred Workflow: Google Authenticator
 =====================================
 
 [![Build Status](https://travis-ci.org/moul/alfred-workflow-gauth.svg?branch=develop)](https://travis-ci.org/moul/alfred-workflow-gauth)
-[![authors](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/badges/authors.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
-[![library users](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/badges/library-users.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
-[![Total views](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/counters/views.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
-[![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/moul/alfred-workflow-gauth/counters/views-24h.png)](https://sourcegraph.com/github.com/moul/alfred-workflow-gauth)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/moul/alfred-workflow-gauth/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Google Authenticator Workflow for Alfred2
 

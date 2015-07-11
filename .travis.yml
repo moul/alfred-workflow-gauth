@@ -1,3 +1,4 @@
 language: python
 sudo: false
+install: pip install pep8
 script: pep8 src/*.py

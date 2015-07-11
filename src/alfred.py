@@ -142,8 +142,11 @@ class AlfredWorkflow(object):
         return write(xml(items, maxresults=self.max_results))
 
     def message_item(self, title, message, icon=None, uid=0):
-        return Item({u'uid': get_uid(uid), u'arg': '',
-                            u'ignore': 'yes'}, title, message, icon)
+        return Item({
+            u'uid': get_uid(uid),
+            u'arg': '',
+            u'ignore': 'yes'
+        }, title, message, icon)
 
     def warning_item(self, title, message, uid=0):
         return self.message_item(title=title, message=message, uid=uid,

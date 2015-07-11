@@ -1,0 +1,3 @@
+language: python
+
+script: pep8 src/*.py

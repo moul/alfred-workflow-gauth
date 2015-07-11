@@ -7,7 +7,8 @@ Google Authenticator Workflow for Alfred2
 
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/anim.gif)
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/3.png)
-Equivalent of the mobile versions of [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8).
+
+Alfred workflow equivalent of the mobile versions of [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8) or [Authy](https://www.authy.com).
 
 I personally use it on Gmail, Amazon AWS, Github, Facebook, Evernote and Dropbox
 

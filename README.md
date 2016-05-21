@@ -32,7 +32,7 @@ secret=yyyyyyyyyyyyyyyyyy
 Dependencies
 ------------
 
-- Alfred 2 with PowerPack
+- Alfred 2 or 3 with PowerPack
 - Python >= 2.7
 
 Non-exhaustive list of links for "secret" installation

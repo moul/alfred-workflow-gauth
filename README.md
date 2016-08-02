@@ -3,12 +3,12 @@ Alfred Workflow: Google Authenticator
 
 [![Build Status](https://travis-ci.org/moul/alfred-workflow-gauth.svg?branch=develop)](https://travis-ci.org/moul/alfred-workflow-gauth)
 
-Google Authenticator Workflow for Alfred2
+An Alfred 2 workflow for Google Authenticator / a.k.a. Two-Factors Authentication / a.k.a. Time-Based Authentication Token / a.k.a. TOTP
 
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/anim.gif)
 ![](https://raw.github.com/moul/alfred-workflow-gauth/develop/screenshots/3.png)
 
-Alfred workflow equivalent of the mobile versions of [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8) or [Authy](https://www.authy.com).
+An Alfred workflow equivalent of the mobile applications [Google Authenticator](https://itunes.apple.com/en/app/google-authenticator/id388497605?mt=8) and [Authy](https://www.authy.com).
 
 I personally use it on Gmail, Amazon AWS, Github, Facebook, Evernote and Dropbox
 

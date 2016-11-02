@@ -161,7 +161,7 @@
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>Verification code ({query}) has been wrote at the Cursor</string>
+				<string>Verification code ({query}) has been written at the Cursor</string>
 				<key>title</key>
 				<string>Google Authenticator</string>
 			</dict>

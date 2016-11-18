@@ -10,6 +10,7 @@ import time
 import ConfigParser
 import os.path
 import math
+import keychain
 
 import alfred
 
@@ -24,6 +25,7 @@ _CONFIG_FILE_INITIAL_CONTENT = \
 #[evernote - robert]
 #secret=yyyyyyyyyyyyyyyyyy
 """
+_KEYCHAIN = 'login'
 
 
 def get_hotp_token(key, intervals_no):
@@ -36,6 +38,17 @@ def get_hotp_token(key, intervals_no):
 
 def get_totp_token(key):
     return get_hotp_token(key, intervals_no=int(time.time()) // 30)
+
+
+def get_key_by_secret(secret):
+    secret = secret.replace(' ', '')
+    secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
+    key = base64.b32decode(secret, casefold=True)
+    return key
+
+
+def get_token_by_secret(secret):
+    return str(get_totp_token(get_key_by_secret(secret))).zfill(6)
 
 
 def get_section_token(config, section):
@@ -58,9 +71,7 @@ def get_section_token(config, section):
         key = hexkey.decode('hex')
 
     if secret:
-        secret = secret.replace(' ', '')
-        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
-        key = base64.b32decode(secret, casefold=True)
+        key = get_key_by_secret(secret)
 
     return str(get_totp_token(key)).zfill(6)
 
@@ -83,6 +94,19 @@ def is_secret_valid(secret):
 
 def list_accounts(config, query):
     i = 0
+    k = keychain.Keychain()
+    for i in xrange(10):
+        try:
+            entry = k.get_generic_password(_KEYCHAIN, 'alfred-gauth-{}'.format(i))
+            token = get_token_by_secret(entry['password'])
+            yield alfred.Item({u'uid': alfred.uid(i), u'arg': token,
+                               u'autocomplete': entry['service']},
+                              entry['service'],
+                              'Post {} at cursor'.format(token),
+                              'icon.png')
+        except:
+            pass
+
     for section in config.sections():
         if len(query.strip()) and not query.lower() in str(section).lower():
             continue

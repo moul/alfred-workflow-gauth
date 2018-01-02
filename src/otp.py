@@ -5,7 +5,6 @@ import base64
 import struct
 import hashlib
 import time
-import math
 
 
 def get_hotp_token(key, intervals_no):
@@ -25,12 +24,21 @@ def get_totp_time_remaining():
     return int(30 - (time.time() % 30))
 
 
+def pad_base32_str(str, padding_char):
+    str_len = len(str)
+    missing_padding = str_len % 8
+    if missing_padding != 0:
+        # str += '=' * (8 - missing_padding)
+        str = str.ljust(str_len + 8 - missing_padding, padding_char)
+    return str
+
+
 def is_otp_secret_valid(secret):
     try:
         secret = secret.replace(' ', '')
         if not len(secret):
             return False
-        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
+        secret = pad_base32_str(secret, '=')
         key = base64.b32decode(secret, casefold=True)
         get_totp_token(key)
     except:
@@ -44,6 +52,6 @@ def get_hotp_key(key=None, secret=None, hexkey=None):
         key = hexkey.decode('hex')
     if secret:
         secret = secret.replace(' ', '')
-        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
+        secret = pad_base32_str(secret, '=')
         key = base64.b32decode(secret, casefold=True)
     return key

@@ -1,7 +1,7 @@
 Alfred Workflow: Google Authenticator
 =====================================
 
-[![Build Status](https://travis-ci.org/moul/alfred-workflow-gauth.svg?branch=develop)](https://travis-ci.org/moul/alfred-workflow-gauth)
+[![Build Status](https://travis-ci.org/moul/alfred-workflow-gauth.svg?branch=develop)](https://travis-ci.org/moul/alfred-workflow-gauth) [![GuardRails badge](https://badges.production.guardrails.io/moul/alfred-workflow-gauth.svg)](https://www.guardrails.io)
 
 An Alfred 2 workflow for Google Authenticator / a.k.a. Two-Factors Authentication / a.k.a. Time-Based Authentication Token / a.k.a. TOTP
 

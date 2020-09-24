@@ -65,7 +65,11 @@ class AlfredGAuth(alfred.AlfredWorkflow):
         except:
             hexkey = None
 
-        key = otp.get_hotp_key(secret=secret, key=key, hexkey=hexkey)
+        try:
+            key = otp.get_hotp_key(secret=secret, key=key, hexkey=hexkey)
+        except:
+            key = ''
+
         return otp.get_totp_token(key)
 
     def config_list_accounts(self):

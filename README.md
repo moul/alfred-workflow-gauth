@@ -52,6 +52,12 @@ Links
 - [Official Forum Post](http://www.alfredforum.com/topic/4062-gauth-google-authenticator-time-based-two-factor-authentication/)
 - [Source Code](https://github.com/moul/alfred-workflow-gauth/)
 
+Development
+-----------
+
+After modifying files locally, run `build.sh` to update the workflow file, and
+commit the workflow file update to this repository.
+
 Acknowledgment
 --------------
 

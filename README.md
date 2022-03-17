@@ -33,7 +33,7 @@ Dependencies
 ------------
 
 - Alfred 2 or 3 with PowerPack
-- Python >= 2.7
+- Python3
 
 Non-exhaustive list of links for "secret" installation
 ------------------------------------------------------

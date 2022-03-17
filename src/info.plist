@@ -392,7 +392,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>python workflow.py add_account "{query}"</string>
+				<string>python3 workflow.py add_account "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>

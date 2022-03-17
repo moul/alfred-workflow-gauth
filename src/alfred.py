@@ -11,7 +11,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 You should run your script via /bin/bash with all escape options ticked.
 The command line should be
 
-python yourscript.py "{query}" arg2 arg3 ...
+python3 yourscript.py "{query}" arg2 arg3 ...
 """
 
 

@@ -27,11 +27,11 @@ class Item(object):
     @classmethod
     def unicode(cls, value):
         try:
-            items = value.iteritems()
+            items = value.items()
         except AttributeError:
-            return unicode(value)
+            return str(value)
         else:
-            return dict(map(unicode, item) for item in items)
+            return dict(map(str, item) for item in items)
 
     def __init__(self, attributes, title, subtitle, icon=None):
         self.attributes = attributes
@@ -53,7 +53,7 @@ class Item(object):
             except:
                 attributes = {}
                 elem = SubElement(item, attribute, self.unicode(attributes))
-                elem.text = unicode(value)
+                elem.text = str(value)
         return item
 
 
@@ -66,11 +66,11 @@ def config():
 
 
 def decode(s):
-    return unicodedata.normalize('NFC', s.decode('utf-8'))
+    return unicodedata.normalize('NFC', s.encode("utf-8").decode('utf-8'))
 
 
 def get_uid(uid):
-    return u'-'.join(map(unicode, (bundleid, uid)))
+    return u'-'.join(map(str, (bundleid, uid)))
 
 
 def unescape(query, characters=None):
@@ -82,7 +82,7 @@ def unescape(query, characters=None):
 
 
 def write(text):
-    sys.stdout.write(text)
+    sys.stdout.buffer.write(text)
 
 
 def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
@@ -176,3 +176,4 @@ class AlfredWorkflow(object):
             command = command.strip()
         return command in self._reserved_words or \
             hasattr(self, 'do_{}'.format(command))
+

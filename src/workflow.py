@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import ConfigParser
+import configparser
 import time
 
 import alfred
@@ -25,7 +25,7 @@ class AlfredGAuth(alfred.AlfredWorkflow):
 
         self._config_file = config_file
         self.config_file = os.path.expanduser(self._config_file)
-        self.config = ConfigParser.RawConfigParser()
+        self.config = configparser.RawConfigParser()
         self.config.read(self.config_file)
 
         # If the configuration file doesn't exist, create an empty one
@@ -127,7 +127,7 @@ class AlfredGAuth(alfred.AlfredWorkflow):
             self.config.add_section(account)
             self.config.set(account, "secret", secret)
             self.config.write(config_file)
-        except ConfigParser.DuplicateSectionError:
+        except configparser.DuplicateSectionError:
             return "Account already exists:\n[{0}]".format(account)
         finally:
             config_file.close()
@@ -156,3 +156,4 @@ def main(action, query):
 
 if __name__ == "__main__":
     main(action=alfred.args()[0], query=alfred.args()[1])
+

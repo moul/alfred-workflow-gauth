@@ -7,7 +7,7 @@ import base64
 import struct
 import hashlib
 import time
-import ConfigParser
+import configparser
 import os.path
 import math
 
@@ -29,7 +29,7 @@ _CONFIG_FILE_INITIAL_CONTENT = \
 def get_hotp_token(key, intervals_no):
     msg = struct.pack(">Q", intervals_no)
     h = hmac.new(key, msg, hashlib.sha1).digest()
-    o = ord(h[19]) & 15
+    o = h[19] & 15
     h = (struct.unpack(">I", h[o:o + 4])[0] & 0x7fffffff) % 1000000
     return h
 
@@ -59,9 +59,8 @@ def get_section_token(config, section):
 
     if secret:
         secret = secret.replace(' ', '')
-        secret = secret.ljust(int(math.ceil(len(secret) / 8.0) * 8), '=')
+        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
         key = base64.b32decode(secret, casefold=True)
-
     return str(get_totp_token(key)).zfill(6)
 
 
@@ -72,7 +71,7 @@ def get_time_remaining():
 def is_secret_valid(secret):
     try:
         secret = secret.replace(' ', '')
-        secret = secret.ljust(int(math.ceil(len(secret) / 8.0) * 8), '=')
+        secret = secret.ljust(int(math.ceil(len(secret) / 16.0) * 16), '=')
         key = base64.b32decode(secret, casefold=True)
         get_totp_token(key)
     except:
@@ -120,22 +119,22 @@ def add_account(config, query):
         secret = secret.strip()
     except ValueError:
         return "Invalid arguments!\n" + \
-               "Please enter: account, secret."
+               "Please enter: account, secret.".encode()
 
     if not is_secret_valid(secret):
-        return "Invalid secret:\n[{0}]".format(secret)
+        return "Invalid secret:\n[{0}]".format(secret).encode()
 
     config_file = open(_CONFIG_FILE, 'r+')
     try:
         config.add_section(account)
         config.set(account, "secret", secret)
         config.write(config_file)
-    except ConfigParser.DuplicateSectionError:
-        return "Account already exists:\n[{0}]".format(account)
+    except configparser.DuplicateSectionError:
+        return "Account already exists:\n[{0}]".format(account).encode()
     finally:
         config_file.close()
 
-    return "A new account was added:\n[{0}]".format(account)
+    return "A new account was added:\n[{0}]".format(account).encode()
 
 
 def config_file_is_empty():
@@ -147,7 +146,7 @@ def config_file_is_empty():
 
 
 def get_config():
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
     config.read(os.path.expanduser(_CONFIG_FILE))
     return config
 

@@ -227,7 +227,7 @@
 				<key>runningsubtext</key>
 				<string>Please wait...</string>
 				<key>script</key>
-				<string>python gauth.py list "{query}"</string>
+				<string>python3 gauth.py list "{query}"</string>
 				<key>subtext</key>
 				<string>Account</string>
 				<key>title</key>
@@ -311,7 +311,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
-				<string>python gauth.py add "{query}"</string>
+				<string>python3 gauth.py add "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

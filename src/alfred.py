@@ -11,24 +11,26 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 You should run your script via /bin/bash with all escape options ticked.
 The command line should be
 
-python yourscript.py "{query}" arg2 arg3 ...
+python3 yourscript.py "{query}" arg2 arg3 ...
 """
 UNESCAPE_CHARACTERS = u""" ;()"""
 
 _MAX_RESULTS_DEFAULT = 9
 
-preferences = plistlib.readPlist('info.plist')
+# preferences = plistlib.readPlist('info.plist')
+with open('info.plist','rb') as fp:
+  preferences = plistlib.load(fp)
 bundleid = preferences['bundleid']
 
 class Item(object):
     @classmethod
     def unicode(cls, value):
         try:
-            items = value.iteritems()
+            items = value.items()
         except AttributeError:
-            return unicode(value)
+            return str(value)
         else:
-            return dict(map(unicode, item) for item in items)
+            return dict(map(str, item) for item in items)
 
     def __init__(self, attributes, title, subtitle, icon=None):
         self.attributes = attributes
@@ -49,7 +51,7 @@ class Item(object):
                 (value, attributes) = value
             except:
                 attributes = {}
-            SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
+            SubElement(item, attribute, self.unicode(attributes)).text = str(value)
         return item
 
 def args(characters=None):
@@ -59,10 +61,10 @@ def config():
     return _create('config')
 
 def decode(s):
-    return unicodedata.normalize('NFC', s.decode('utf-8'))
+    return unicodedata.normalize('NFC', s)
 
 def uid(uid):
-    return u'-'.join(map(unicode, (bundleid, uid)))
+    return u'-'.join(map(str, (bundleid, uid)))
 
 def unescape(query, characters=None):
     for character in (UNESCAPE_CHARACTERS if (characters is None) else characters):
@@ -70,7 +72,7 @@ def unescape(query, characters=None):
     return query
 
 def write(text):
-    sys.stdout.write(text)
+    sys.stdout.buffer.write(text)
 
 def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
     root = Element('items')

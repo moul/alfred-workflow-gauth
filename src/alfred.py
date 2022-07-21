@@ -19,7 +19,9 @@ UNESCAPE_CHARACTERS = u""" ;()"""
 
 _MAX_RESULTS_DEFAULT = 9
 
-preferences = plistlib.readPlist('info.plist')
+
+with open('info.plist', 'rb') as file:
+    preferences = plistlib.load(file)
 bundleid = preferences['bundleid']
 
 
@@ -110,20 +112,22 @@ def work(volatile):
 
 def config_set(key, value, volatile=True):
     filepath = os.path.join(work(volatile), 'config.plist')
-    try:
-        conf = plistlib.readPlist(filepath)
-    except IOError:
-        conf = {}
+    with open(filepath, 'rb') as file:
+        try:
+            conf = plistlib.load(file)
+        except IOError:
+            conf = {}
     conf[key] = value
     plistlib.writePlist(conf, filepath)
 
 
 def config_get(key, default=None, volatile=True):
     filepath = os.path.join(work(volatile), 'config.plist')
-    try:
-        conf = plistlib.readPlist(filepath)
-    except IOError:
-        conf = {}
+    with open(filepath, 'rb') as file:
+        try:
+            conf = plistlib.load(file)
+        except IOError:
+            conf = {}
     if key in conf:
         return conf[key]
     return default

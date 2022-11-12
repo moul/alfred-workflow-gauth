@@ -19,7 +19,8 @@ UNESCAPE_CHARACTERS = u""" ;()"""
 
 _MAX_RESULTS_DEFAULT = 9
 
-preferences = plistlib.readPlist('info.plist')
+with open('info.plist', 'rb') as f:
+    preferences = plistlib.load(f)
 bundleid = preferences['bundleid']
 
 
